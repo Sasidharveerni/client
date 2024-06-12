@@ -2,37 +2,316 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ED5353;
+  color: white;
+  width: 98.5vw;
+  height: 6rem;
+  text-align: center;
+  border-bottom-left-radius: 2rem; /* Adjust radius as needed */
+  border-bottom-right-radius: 2rem;
+  z-index: 999;
+}
+
+.header-sec {
+  display: flex;
+  text-align: center;
+  margin-right: 3rem;
+  background-image: url('./assets/Rectangle\ 4.png');
+}
+
+
+
+.search-section {
+  width: 50rem;
+  height: 10rem;
+  margin: 2rem;
+  box-shadow: 0 0 15px 5px #FF202040;
+}
+
+.search-bar {
+  border: 1px solid #ccc;
+  color: #9C9C9C;
+  width: 40rem;
+  height: 2rem;
+}
+
+.search-section .fas {
+  position: relative;
+  left: 2rem;
+  font-size: 1em; /* Adjust icon size as needed */
+  color: #ccc; /* Adjust icon color as needed */
+}
+
+
+.filter-section {
+  margin: 2rem;
+  width: 40rem;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5rem;
+}
+
+
+
+.dropdown {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.tag {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: #721c24;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+
+.filter-btn {
+  padding: 10px 15px;
+  margin-left: 10px;
+  background-color: #f56464;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.clear-button {
+  background-color: transparent;
+  color: #f56464;
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+
+/* .job-section {
+  width: 50rem;
+  height: 5rem;
+  margin: 2rem;
+  box-shadow: 0 0 15px 5px #FF202040;
+  display: flex;
+} */
+
+
+.job-section {
+  width: 50rem;
+  height: 6rem;
+  margin: 2rem;
+  padding: 1rem;
+  box-shadow: 0 0 15px 5px #FF202040;
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+
+.logo-container {
+  flex: 0 0 auto;
+  margin-right: 1rem;
+}
+
+.logo-container img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.job-details {
+  flex: 1;
+}
+
+.job-details h5 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.job-meta {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.job-meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.job-meta-item img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.job-tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: #ffe3e3;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: #ff2020;
+}
+
+.job-actions {
+  margin: 1rem;
+}
+
+.view-details-button {
+  background: #ED5353;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  margin-top: 2rem;
+}
+
+
+.edit-details-button {
+  background: transparent;
+  color: #ED5353;
+  border: 1px solid #ED5353;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  margin-top: 2rem;
+  margin-right: 1rem;
+}
+
+.view-details-button:hover {
+  background: #e60000;
+}
+
+.vertical {
+  border-left: 6px solid #FF0000;
+  min-height: 7rem;
+  float: left;
+  position: relative;
+  right: 1rem;
+}
+
+
+/* Loader.css */
+.loader {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
 }
 
-.App-link {
-  color: #61dafb;
+.spinner {
+  border: 4px solid #fff;
+  border-left-color: #ff2020;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+@keyframes spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.job-header {
+  width: 30rem;
+  height: 4rem;
+  margin: 2rem;
+  background-color: #fff;
+  text-align: center;
+}
+
+.job-card {
+  width: 30rem;
+  margin: 2rem;
+  background-color: #fff;
+}
+
+.job-card-item {
+  display: flex;
+  gap: 0.5rem;
+  color: #9C9C9C;
+  font-size: 0.6em;
+  margin: 1rem;
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.job-card-header button {
+  background: #ED5353;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 6rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+.job-card-item-1{
+  display: flex;
+  gap: 1rem;
+  font-size: 0.6em;
+  margin: 1rem;
+}
+
+.job-card-item-1 p {
+  color: #9C9C9C;
+}
+
+.job-card-item-2 {
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.job-card-item-2 p {
+  font-size: 0.7em;
+  color: #9C9C9C;
+}
+
+.skill-item {
+  color: #595959;
+  background-color: #FFEEEE;
+  border-radius: 0.5rem;
+  min-width: 3rem;
+  padding: 0.3rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
