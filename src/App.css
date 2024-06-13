@@ -46,6 +46,14 @@
   height: 2rem;
 }
 
+input.search-bar{
+  padding-left: 2rem; /* Adjust this value to move the placeholder text */
+}
+
+.fas {
+  padding-right: 0.5rem;
+}
+
 .search-section .fas {
   position: relative;
   left: 2rem;
