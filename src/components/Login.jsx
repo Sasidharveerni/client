@@ -23,7 +23,7 @@ function Login() {
         e.preventDefault();
 
         try {
-           const response = await axios.post('http://localhost:5000/login', {email, password})
+           const response = await axios.post('https://job-listing-server-7fp1.onrender.com/login', {email, password})
            console.log(response.data)
            if(response.data.status === 'Success') {
              setErrors('');
@@ -40,7 +40,7 @@ function Login() {
            }
         } catch (error) {
             console.log(error);
-            // setErrors(error.response.data.message)
+            setErrors(error.response.data.message)
           }
             resetData();
     }

@@ -50,7 +50,7 @@ function AddJobPage() {
     try {
       const userToken = localStorage.getItem('userToken');
       if (userToken) {
-        const response = await axios.post('http://localhost:5000/add', job, {
+        const response = await axios.post('https://job-listing-server-7fp1.onrender.com/add', job, {
           headers: {
             Authorization: `Bearer ${userToken}`
           }

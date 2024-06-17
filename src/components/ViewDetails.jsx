@@ -21,7 +21,7 @@ function ViewDetails({ islogin, userData, isUserLogged }) {
     useEffect(() => {
         const fetchJobDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/job/${jobId}`);
+                const response = await axios.get(`https://job-listing-server-7fp1.onrender.com/job/${jobId}`);
                 setJobDetails(response.data.data);
                 console.log(response.data.data)
                 // console.log(jobDetails)
@@ -43,7 +43,7 @@ function ViewDetails({ islogin, userData, isUserLogged }) {
             const usertoken = localStorage.getItem('userToken');
             console.log(usertoken);
             const response = await axios.post(
-                `http://localhost:5000/apply/${jobId}`,
+                `https://job-listing-server-7fp1.onrender.com/apply/${jobId}`,
                 {}, // Body can be empty or include any data if required
                 {
                     headers: {

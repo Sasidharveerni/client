@@ -13,7 +13,7 @@ function ApplicationPage({ userData }) {
     const fetchJobDetails = async () => {
       try {
         const jobDetailsPromises = userData.appliedJobs.map(jobId =>
-          axios.get(`http://localhost:5000/job/${jobId}`)
+          axios.get(`https://job-listing-server-7fp1.onrender.com/job/${jobId}`)
         );
         const jobDetailsResponses = await Promise.all(jobDetailsPromises);
         const jobs = jobDetailsResponses.map(response => response.data.data);

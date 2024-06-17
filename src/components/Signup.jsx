@@ -29,7 +29,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/register', {
+      const response = await axios.post('https://job-listing-server-7fp1.onrender.com/register', {
         name,
         email,
         password,

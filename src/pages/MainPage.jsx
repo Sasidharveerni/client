@@ -36,7 +36,7 @@ function MainPage({ islogin, userData, isUserLogged }) {
   const validateUser = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:5000/jobs');
+      const response = await axios.get('https://job-listing-server-7fp1.onrender.com/jobs');
       setJobs(response.data.data);
     } catch (error) {
       console.log(error);
@@ -81,7 +81,7 @@ function MainPage({ islogin, userData, isUserLogged }) {
         queryParams.push(`jobPosition=${searchText}`);
       }
       const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-      const response = await axios.get(`http://localhost:5000/job/filter${queryString}`);
+      const response = await axios.get(`https://job-listing-server-7fp1.onrender.com/job/filter${queryString}`);
       setJobs(response.data.jobs);
     } catch (error) {
       console.log(error);

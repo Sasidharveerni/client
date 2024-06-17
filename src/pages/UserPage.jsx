@@ -17,7 +17,7 @@ function UserPage({ userData, isUserLogged }) {
     try {
       const usertoken = localStorage.getItem('userToken');
       const response = await axios.patch(
-        `http://localhost:5000/update/${userData._id}`,
+        `https://job-listing-server-7fp1.onrender.com/update/${userData._id}`,
         { name, email, password },
         {
           headers: {

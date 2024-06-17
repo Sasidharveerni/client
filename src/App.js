@@ -31,7 +31,7 @@ function App() {
       const useremail = localStorage.getItem('userEmail');
       console.log('function called')
       if (usertoken) {
-        const response = await axios.post('http://localhost:5000/login/status', {
+        const response = await axios.post('https://job-listing-server-7fp1.onrender.com/login/status', {
           email: useremail
         }, {
           headers: {
