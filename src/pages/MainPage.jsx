@@ -7,23 +7,25 @@ import JobSection from '../components/JobSection';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import Loader from '../components/Loader';
+import showToasts from '../components/Toast';
 
-function MainPage({ islogin }) {
+function MainPage({ islogin, userData, isUserLogged }) {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [availableSkills, setAvailableSkills] = useState([]);
   const [searchText, setSearchText] = useState('');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     validateUser();
+    isUserLogged();
   }, []);
 
   useEffect(() => {
-    // Collect all unique skills from the jobs array
     const skillsSet = new Set();
     jobs.forEach(job => {
       job.skillsRequired.forEach(skill => skillsSet.add(skill));
@@ -45,9 +47,11 @@ function MainPage({ islogin }) {
   const handleLogout = () => {
     setLoading(true);
     try {
-      // Clear user token or session
       localStorage.removeItem('userToken');
-      navigate('/login');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000)
+      showToasts('Logged out successfully', 'success')
     } catch (error) {
       console.error('Error during logout:', error);
     }
@@ -77,10 +81,8 @@ function MainPage({ islogin }) {
         queryParams.push(`jobPosition=${searchText}`);
       }
       const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-      console.log(queryString)
       const response = await axios.get(`http://localhost:5000/job/filter${queryString}`);
       setJobs(response.data.jobs);
-      console.log(response.data.jobs)
     } catch (error) {
       console.log(error);
     }
@@ -90,8 +92,19 @@ function MainPage({ islogin }) {
   const handleClear = () => {
     setSelectedSkills([]);
     setSearchText('');
-    // Optionally, fetch all jobs again or reset the jobs state
     validateUser();
+  };
+
+  const handleAddJob = () => {
+    navigate('/add/job');
+  };
+
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleViewApplications = () => {
+    navigate('/user/applications');
   };
 
   return (
@@ -114,8 +127,16 @@ function MainPage({ islogin }) {
               <div style={{ margin: '1rem' }}>
                 <button style={{ color: 'white', background: 'transparent', border: 'none', cursor: 'pointer' }} onClick={handleLogout}>Logout</button>
               </div>
-              <div style={{ margin: '1rem' }}>
-                Hello! Recruiter
+              <div style={{ margin: '1rem', position: 'relative' }}>
+                <button onClick={handleDropdownToggle} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: '#fff' }}>
+                  Hello! {userData.isRecruiter ? 'Recruiter' : userData.name }
+                </button>
+                {dropdownOpen && (
+                  <div className='dropdown-menu'>
+                    <button onClick={() => navigate('/user/profile')}>Update Profile</button>
+                    <button onClick={handleViewApplications}>View Your Applications</button>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
@@ -170,8 +191,28 @@ function MainPage({ islogin }) {
         </div>
 
         {jobs && jobs.map((job, ind) => (
-          <JobSection key={ind} jobs={job} islogin={islogin} />
+          <JobSection key={ind} jobs={job} islogin={islogin} userData={userData} />
+          
         ))}
+
+        {islogin && userData.isRecruiter && (
+          <div style={{ position: 'fixed', right: '2rem', bottom: '2rem', zIndex: '1000' }}>
+            <button 
+              style={{
+                padding: '0.5rem',
+                fontSize: '0.8em',
+                backgroundColor: '#ED5353',
+                color: 'white',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: '5px'
+              }}
+              onClick={handleAddJob}
+            >
+              Add Job
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

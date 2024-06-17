@@ -28,17 +28,19 @@ function Login() {
            if(response.data.status === 'Success') {
              setErrors('');
              localStorage.setItem('userToken', response.data.token)
-             setInterval(() => {
-              navigate('/')
-             }, 2000)
+             localStorage.setItem('userEmail', email);
+             
+         
+             showToasts(response.data.message, 'success')
+              navigate('/job/feed')
+          
             //  alert(response.data.message)
             
-            showToasts(response.data.message, 'success')
             
            }
         } catch (error) {
-            console.log(error.response.data);
-            setErrors(error.response.data.message)
+            console.log(error);
+            // setErrors(error.response.data.message)
           }
             resetData();
     }

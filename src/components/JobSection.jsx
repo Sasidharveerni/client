@@ -3,21 +3,21 @@ import Persons from '../assets/Group 1.png';
 import IndiaFlag from '../assets/india.png';
 import { useNavigate } from 'react-router';
 
-const JobSection = ({jobs, islogin}) => {
+const JobSection = ({ jobs, islogin, userData }) => {
     const navigate = useNavigate();
 
     if (!jobs || !jobs.skillsRequired) {
         return <div>No job details available</div>;
-      }
+    }
 
     return (
         <div className='job-section'>
-            <div class = "vertical"></div>
+            <div className="vertical"></div>
             <div className='logo-container'>
                 <img src={jobs.logoUrl} alt='Company Logo' />
             </div>
             <div className='job-details'>
-                <div style={{marginTop: '0.5rem'}}>
+                <div style={{ marginTop: '0.5rem' }}>
                     <h5>{jobs.jobPosition}</h5>
                 </div>
                 <div className='job-meta'>
@@ -34,23 +34,25 @@ const JobSection = ({jobs, islogin}) => {
                     </div>
                 </div>
                 <div>
-                    <div style={{display: 'flex', color: '#ED5353',gap: '1rem'}}>
-                    <p>Office</p>
-                    <p>{jobs.jobType}</p>
+                    <div style={{ display: 'flex', color: '#ED5353', gap: '1rem' }}>
+                        <p>Office</p>
+                        <p>{jobs.jobType}</p>
                     </div>
                 </div>
             </div>
-                <div className='job-actions'>
-                    <div className='job-tags'>
-                        {jobs.skillsRequired.map((skill) => ( // Jobs.skillsRequired is an array
-                            <span className='tag'>{skill}</span>
-                        ))}
-                    </div>
-                    <div>
-                    <button className='view-details-button' onClick={() =>  navigate(`/job/details/${jobs._id}`)} >View details</button>
-                    {islogin &&  <button className='edit-details-button' onClick={() => navigate(`/job/details/${jobs._id}`)}>Edit job</button>}
-                    </div>
+            <div className='job-actions'>
+                <div className='job-tags'>
+                    {jobs.skillsRequired.map((skill, index) => (
+                        <span key={index} className='tag'>{skill}</span>
+                    ))}
                 </div>
+                <div>
+                    <button className='view-details-button' onClick={() => navigate(`/job/details/${jobs._id}`)}>View details</button>
+                    {islogin && userData.isRecruiter && (
+                        <button className='edit-details-button' onClick={() => navigate(`/job/details/${jobs._id}/edit`)}>Edit job</button>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };

@@ -7,9 +7,10 @@ import bgImg2 from '../assets/Rectangle 13.png';
 import MoneyLogo from '../assets/ph_money-fill.png'
 import CalendarLogo from '../assets/uis_calender.png'
 import { useEffect, useState } from 'react';
+import showToasts from './Toast';
 import axios from 'axios';
 
-function ViewDetails({ islogin }) {
+function ViewDetails({ islogin, userData, isUserLogged }) {
 
     const { jobId } = useParams();
     const navigate = useNavigate();
@@ -29,6 +30,7 @@ function ViewDetails({ islogin }) {
             }
         };
 
+        isUserLogged();
         fetchJobDetails();
     }, [jobId]);
 
@@ -36,6 +38,44 @@ function ViewDetails({ islogin }) {
         return <div>Loading...</div>;
     }
 
+    const applyJobDetails = async () => {
+        try {
+            const usertoken = localStorage.getItem('userToken');
+            console.log(usertoken);
+            const response = await axios.post(
+                `http://localhost:5000/apply/${jobId}`,
+                {}, // Body can be empty or include any data if required
+                {
+                    headers: {
+                        Authorization: `Bearer ${usertoken}`
+                    }
+                }
+            );
+            console.log(response);
+            if (response.data.status === 'Success') {
+                showToasts(response.data.message, 'success');
+                setTimeout(() => {
+                    navigate('/job/feed')
+                }, 2000)
+            } else {
+                showToasts(response.data.message, 'error');
+            }
+        } catch (error) {
+            console.error('Error applying job :', error);
+            showToasts(error.response.data.message, 'error');
+        }
+    };
+    
+
+    const handleLogout = () => {
+        try {
+          // Clear user token or session
+          localStorage.removeItem('userToken');
+          navigate('/login');
+        } catch (error) {
+          console.error('Error during logout:', error);
+        }
+      };
 
     return (
         <>
@@ -53,10 +93,10 @@ function ViewDetails({ islogin }) {
 
                     {islogin ? (<div className='header-sec'>
                         <div style={{ margin: '1rem' }}>
-                            <button style={{ color: 'white', background: 'transparent', border: 'none' }}>Logout</button>
+                            <button onClick={handleLogout} style={{ color: 'white', background: 'transparent', border: 'none' }}>Logout</button>
                         </div>
                         <div style={{ margin: '1rem' }}>
-                            Hello! Recruiter
+                            Hello! {userData.isRecruiter ? 'Recruiter' : 'Candidate'}
                         </div>
                     </div>)
 
@@ -96,7 +136,7 @@ function ViewDetails({ islogin }) {
                                 <h2>{jobDetails.jobPosition}</h2>
                                 <p style={{ color: '#ED5353', position: 'relative', bottom: '1rem', fontSize: '0.7em' }}>Bangalore | {jobDetails.location}</p>
                             </div>
-                            <button>Edit Job</button>
+                            {userData.isRecruiter ? (<button> Edit Job </button>) : (<button onClick={ applyJobDetails}> Apply Job </button>)}
                         </div>
 
                         <div className='job-card-item-1'>
@@ -130,29 +170,29 @@ function ViewDetails({ islogin }) {
 
                         <div className='job-card-item-2'>
                             <h5>About the job/internship</h5>
-                            <p style={{marginBottom: '3rem'}}>
+                            <p style={{ marginBottom: '3rem' }}>
                                 {jobDetails.jobDescription}
                             </p>
-                                
+
                         </div>
 
-                        <div style={{margin: '1rem'}}>
+                        <div style={{ margin: '1rem' }}>
                             <h5>Skill(s) Required</h5>
 
-                            <div style={{display: 'flex'}}>
-                             {jobDetails.skillsRequired.map((skill, ind) => (
+                            <div style={{ display: 'flex' }}>
+                                {jobDetails.skillsRequired.map((skill, ind) => (
 
-                            <p key={ind} className='skill-item'>{skill}</p>
-                             ))}
+                                    <p key={ind} className='skill-item'>{skill}</p>
+                                ))}
                             </div>
 
                         </div>
 
-                        <div className='job-card-item-2' style={{paddingBottom: '2rem'}}>
+                        <div className='job-card-item-2' style={{ paddingBottom: '2rem' }}>
                             <h5>Additional Information</h5>
 
                             <p>
-                             {jobDetails.additionalInformation}
+                                {jobDetails.additionalInformation}
                             </p>
 
                         </div>
