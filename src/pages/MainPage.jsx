@@ -148,7 +148,7 @@ function MainPage({ islogin, userData, isUserLogged }) {
               </div>
               <div style={{ margin: '1rem' }}>
                 <button style={{ backgroundColor: '#fff', color: '#ED5353', border: '2px', fontSize: '1em', cursor: 'pointer' }}
-                  onClick={() => navigate('/register')}
+                  onClick={() => navigate('/')}
                 >Register</button>
               </div>
             </div>

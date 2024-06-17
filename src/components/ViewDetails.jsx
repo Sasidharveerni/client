@@ -62,7 +62,12 @@ function ViewDetails({ islogin, userData, isUserLogged }) {
             }
         } catch (error) {
             console.error('Error applying job :', error);
-            showToasts(error.response.data.message, 'error');
+            if(error.response.data.message === 'Token not found or invalid') {
+                showToasts('Please login to apply', 'error');
+            }
+            else {
+                showToasts(error.response.data.message, 'error');
+            }
         }
     };
     
@@ -136,7 +141,7 @@ function ViewDetails({ islogin, userData, isUserLogged }) {
                                 <h2>{jobDetails.jobPosition}</h2>
                                 <p style={{ color: '#ED5353', position: 'relative', bottom: '1rem', fontSize: '0.7em' }}>Bangalore | {jobDetails.location}</p>
                             </div>
-                            {userData.isRecruiter ? (<button> Edit Job </button>) : (<button onClick={ applyJobDetails}> Apply Job </button>)}
+                            {islogin && userData.isRecruiter ? (<button> Edit Job </button>) : (<button onClick={ applyJobDetails}> Apply Job </button>)}
                         </div>
 
                         <div className='job-card-item-1'>
