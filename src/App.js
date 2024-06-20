@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './App.css';
 import Signup from './components/Signup';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import Login from './components/Login';
 import { ToastContainer } from 'react-toastify';
@@ -15,6 +15,8 @@ import UserPage from './pages/UserPage';
 
 
 function App() {
+
+  // const navigate = useNavigate()
   const [islogin, setIslogin] = useState(false);
 
   const [userData, setUserData] = useState(null);
@@ -58,6 +60,7 @@ function App() {
     <>
 
         <Routes>
+          {/* {islogin && navigate('/job/feed')} */}
           <Route path='/' element={<Signup />} />
           <Route path='/login' element={<Login />} />
           <Route path='/job/feed' element={<MainPage islogin={islogin} userData={userData} isUserLogged={isUserLogged}/>} />

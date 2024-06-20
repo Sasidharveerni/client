@@ -72,7 +72,7 @@ function Login() {
                     <div>
                         <p>Don't have an account? 
                         <span style={{cursor: 'pointer', fontWeight: 'bold', color: 'black'}}>
-                            <NavLink to='/register'>
+                            <NavLink to='/'>
                             Sign up
                             </NavLink>
                         </span>
@@ -81,7 +81,7 @@ function Login() {
                 </form>
             </div>
 
-            <div>
+            <div className='image-section'>
                 <h4 style={{color: '#fff', position: 'absolute', right: '8rem'}}>Your Personal Job Finder</h4>
                 <img src={logo} alt='' style={{ width: '40vw', height: '99vh' }} />
             </div>

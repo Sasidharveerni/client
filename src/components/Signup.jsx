@@ -53,7 +53,7 @@ function Signup() {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div className='signup-section'>
       <div style={{ margin: '0 3rem' }}>
         <form onSubmit={handleSubmit}>
           <div>
@@ -167,7 +167,7 @@ function Signup() {
         </form>
       </div>
 
-      <div>
+      <div className='image-section'>
         <h4 style={{ color: '#fff', position: 'absolute', right: '8rem' }}>
           Your Personal Job Finder
         </h4>

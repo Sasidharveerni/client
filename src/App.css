@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.signup-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 .container {
   display: flex;
@@ -519,3 +524,34 @@ input.search-bar{
 .update-button:hover {
   background-color: #45a049;
 }
+
+
+@media screen and (max-width: 480px) and (min-width: 320px) {
+  .image-section {
+    display: none;
+  }
+  .signup-section, .header, .header-sec , .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: none;
+  }
+  .header img, .job-tags, .search-section{
+    display: none;
+  }
+  
+
+  .search-bar {
+    width: 80vw;
+  }
+
+  .job-section, .job-tags, .header-sec, .header {
+    font-size: x-small;
+    width: 90%;
+    position: relative;
+    float: right;
+    left: 4rem;
+  }
+  
+}
+
