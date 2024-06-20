@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+### 1. Register page for job-listing app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![job-finder-signup](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/95d4e6f4-628b-4e69-81e0-6f4ad7e1e356)
 
-## Available Scripts
+### 2. Login page for job-listing app
 
-In the project directory, you can run:
+![job-finder-login](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/5fd572aa-b22a-4202-8497-3bc60edb92ba)
 
-### `npm start`
+### 3. Job feed page for job-listing app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## This page contains entire jobs that are available so user can apply to the jobs that are listed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![job-finder-jobs](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/9ac32178-0b71-4d75-b15e-5b5be979951c)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. User can update his profile whenever he wants to update.
 
-### `npm run build`
+![job-finder-userprofile](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/5940f8dc-4c4d-46cd-9aa1-07f800546682)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 5. Job applications tracking page. 
+## User can track his job applications seamlessly.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![job-finder-user-applications](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/a625d70f-c61c-448a-81b0-51d229211917)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### 6. User as Recruiter .
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## If registered user is a recruiter then he is able to add/delete/update jobs .
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![job-finder-recruiter](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/23630644-9545-4862-a5c4-a3f4a2f85194)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 7. Job Add page for recruiter.
+![job-finder-addjob](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/3343a75a-5c1a-4006-baec-f6a83b7486dd)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![job-finder-addjob2](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/600f7c60-0789-4ce7-814e-8027434fb94b)
 
-## Learn More
+![job-finder-addjob3](https://github.com/Sasidharveerni/job-listing-client/assets/81133052/96ffd3e0-2c8e-4b6c-96bb-203aeb7f31cd)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
